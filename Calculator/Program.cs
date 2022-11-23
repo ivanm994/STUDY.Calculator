@@ -10,6 +10,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            int calculatorUsed = 0;
             bool endApp = false;
             Console.WriteLine("Console Calculator in C#\r");
             Console.WriteLine("------------------------\n");
@@ -19,6 +20,11 @@ namespace Calculator
                 string numInput1 = "";
                 string numInput2 = "";
                 double result = 0;
+
+                if (calculatorUsed > 0)
+                { Console.WriteLine("Number of calculations: " + calculatorUsed);
+                    Console.WriteLine("--------------------\n");
+                }
 
                 Console.Write("Type a number, and then press Enter: ");
                 numInput1 = Console.ReadLine();
@@ -48,6 +54,7 @@ namespace Calculator
                 Console.Write("Your option? ");
 
                 string op = Console.ReadLine();
+                
 
                 try
                 {
@@ -56,7 +63,9 @@ namespace Calculator
                     {
                         Console.WriteLine("This operation will result in a mathematical error.\n");
                     }
-                    else Console.WriteLine("Your result: {0:0.##}\n", result);
+                    else
+                        calculatorUsed++;
+                        Console.WriteLine("Your result: {0:0.##}\n", result);
                 }
                 catch (Exception e)
                 {
